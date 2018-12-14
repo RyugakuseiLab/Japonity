@@ -6,7 +6,6 @@ $cd [ディレクトリ名]
 $ ..
 現在のディレクトリにあるファイル / フォルダを表示
 $ls
-
 ディレクトリを作成
 $mkdir
 gitをクローンする
@@ -17,4 +16,6 @@ $ git status
 $ git add -A
 addしたファイルをコミットする（メッセージつき）
 $ git commit -m “メッセージ” （編集済み）
+GitHubへのPUSH方法
+git push origin [自分の作成したブランチ名]
 
