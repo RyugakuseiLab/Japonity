@@ -4,4 +4,6 @@
 - cms
   - Laravelが入っています
 - test
-  - 好きなように使ってくださいいい
+  - 好きなように使ってください
+
+This is README.md
