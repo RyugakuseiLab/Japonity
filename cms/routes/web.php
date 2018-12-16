@@ -10,7 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
+use APP\Language;
+use APP\Level;
+
+use Illuminate\Http\Request;
+
+
+// Route::get('/', function () {return view('welcome');});
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home')
+;});
+
+
+Route::post('/')
