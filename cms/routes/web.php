@@ -15,7 +15,7 @@ use APP\Language;
 use APP\Level;
 
 use Illuminate\Http\Request;
-
+// use Illuminate\Https\Request;
 
 // Route::get('/', function () {return view('welcome');});
 
@@ -23,5 +23,3 @@ Route::get('/', function () {
     return view('home')
 ;});
 
-
-Route::post('/')
