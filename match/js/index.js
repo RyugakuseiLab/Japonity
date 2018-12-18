@@ -16,10 +16,9 @@ db.settings({ timestampsInSnapshots: true })
 const waitUserRef = db.collection('wait_user')
 
 // 待機する秒数を指定
-const limitTime = 5
+const limitTime = 10
 let currentTime = 0
 let myId = ''
-let myCardData = ''
 
 console.log('test')
 
@@ -49,21 +48,27 @@ $('#match-button').on('click', function () {
         const docData = el.data()
         console.log(`You (${userInfo.userId}) and ${docData.user_id} are matched!`)
         console.log(`Try Connection...\nRoom ID: ${docData.roomid}`)
-        // 接続テスト if false 続ける
-        // return true
+
         // TODO: 相手がログインしているかどうかチェック（skywebで接続テスト）
         // connectToSkyWeb()
         const connectResult = true
         if (connectResult) {
-
+          console.log('相手のID: ' + docData.user_id)
+          waitUserRef.doc(el.id).set({
+            user_id: userInfo.userId,
+            match_user_id: 'test' + Math.floor(Math.random() * 1000),
+            lang: userInfo.lang,
+            level: userInfo.level,
+            roomid: 'hogehogehogehoge'
+          })
+          return true
         } else {
-
+          // 続けます
         }
       })
       console.log('matchResult', matchResult)
 
       // TODO:全てとマッチしなかった場合
-      // if (!matchResult) {
       if (!matchResult) {
         myId = await addInfoToFB(userInfo)
         console.log('myId: ', myId)
@@ -77,19 +82,19 @@ async function waitTillMatching () {
   currentTime += 1
   console.log('Wait flag ' + currentTime)
 
-  if (myCardData === '') {
-    myCardData = await (() => {
-      return new Promise((resolve, reject) => {
-        waitUserRef.doc(myId).onSnapshot((doc) => {
-          return resolve(doc.data())
-        })
+  const myCardData = await (() => {
+    return new Promise((resolve, reject) => {
+      waitUserRef.doc(myId).onSnapshot((doc) => {
+        return resolve(doc.data())
       })
-    })()
-    console.log(myCardData)
-  }
+    })
+  })()
+  console.log(myCardData)
 
   if (myCardData.match_user_id !== '') {
     console.log('マッチングしたよ！！！！')
+    console.log('相手のID: ' + myCardData.match_user_id)
+    removeInfo(myId)
     // TODO: モーダルを消す処理
   } else if (currentTime > limitTime) {
     console.log('マッチングしなかったよ')
