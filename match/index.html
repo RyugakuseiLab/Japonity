@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    test
+    <h3>言語</h3>
+    <select name="select-lang">
+        <option value="en">English</option>
+        <option value="ch">Chinese</option>
+        <option value="ja">Japanese</option>
+    </select>
+    <h3>レベル</h3>
+    <select name="select-level">
+        <option value="1">Absolutely Beginner</option>
+        <option value="2">Beginner</option>
+        <option value="3">Expert</option>
+    </select>
+    <h3>送信</h3>
+    <div>
+        <button id='match-button'>Enter</button>
+    </div>
+
+    <div id="wait">
+        マッチング中
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script type="module" src="./js/index.js"></script>
+</body>
+
+
+</html>
