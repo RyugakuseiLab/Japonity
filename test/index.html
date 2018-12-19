@@ -47,79 +47,83 @@
     </style>
 </head>
 <body>
-<!-- 1.モーダルを表示する為のボタン -->
-<button class="btn btn-primary" data-toggle="modal" data-target="#modal-sample">
-        モーダルを表示
-    </button>
-    
-    <!-- 2.モーダルの配置 -->
-    <div class="modal" id="modal-sample" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-    
-            <!-- 3.モーダルのコンテンツ -->
-            <div class="modal-content">
-                <!-- 4.モーダルのヘッダ -->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="modal-label">モーダルのタイトルを表示する</h4>
-                </div>
-                <!-- 5.モーダルのボディ -->
-                <div class="modal-body">
-                    コンテンツの本文
-                </div>
-                <!-- 6.モーダルのフッタ -->
-                <div class="modal-footer">
-                    <form action="">
+    <!-- 1.モーダルを表示する為のボタン -->
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modal-sample">
+            モーダルを表示
+        </button>
+        
+        <!-- 2.モーダルの配置 -->
+        <div class="modal" id="modal-sample" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+        
+                <!-- 3.モーダルのコンテンツ -->
+                <div class="modal-content">
+                    <!-- 4.モーダルのヘッダ -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="modal-label">モーダルのタイトルを表示する</h4>
+                    </div>
+                    <!-- 5.モーダルのボディ -->
+                    <div class="modal-body">
+                        コンテンツの本文
+                    </div>
+                    <!-- 6.モーダルのフッタ -->
+                    <div class="modal-footer">
+                        <form action="">
 
-                        <p>Language<select name="Language" id="">
-                                <option value="A">English</option>
-                                <option value="B">chineese</option>
-                                <option value="O">japaneese</option>
-                        </select></p> 
-                        <p>Level<select name="Level" id="">
-                                <option value="A">1</option>
-                                <option value="B">2</option>
-                                <option value="O">3</option>
-                        </select></p> 
-                            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                            <button type="button" class="btn btn-primary" id="tel">通話</button>
+                            <p>Language</p>
+                            <select name="select-lang">
+                                <option value="en">English</option>
+                                <option value="ch">Chinese</option>
+                                <option value="ja">Japanese</option>
+                            </select> 
+                            <p>Level</p>
+                            <select name="select-level">
+                                <option value="1">Absolutely Beginner</option>
+                                <option value="2">Beginner</option>
+                                <option value="3">Expert</option>
+                            </select>
+                            <div>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                <button type="button" class="btn btn-primary" id="tel">通話</button>
+                            </div>
 
-                    </form>
+                        </form>
 
+                    </div>
                 </div>
             </div>
         </div>
+
+    <div class="videosContainer">
+        <video id="myStream" autoplay playsinline></video>
     </div>
 
-<div class="videosContainer">
-    <video id="myStream" autoplay playsinline></video>
-</div>
+    <div id="wrapper">
+        <div id="listen"><button>Listen</button></div>
+            <div class="myControllerContainer">
+                <p>Your i_test: <span id="my-id">...</span></p>
+            <!--     <div class="select">
+                    <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+                </div>
+                <div class="select">
+                    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+                </div> -->
+                <form id="make-call">
+                    <input type="text" placeholder="Call peer id..." id="peer-id">
+                    <button type="submit">Call</button>
+                </form>
+                <form id="end-call">
+                    <p>Currently in call with <span id="connected-peer-id">...</span></p>
+                    <button type="submit">End Call</button>
+                </form>
+            <!--     <input type="file" accept="audio/*" capture="microphone" id="recorder"> -->
 
-<div id="wrapper">
-    <div id="listen"><button>Listen</button></div>
-        <div class="myControllerContainer">
-            <p>Your i_test: <span id="my-id">...</span></p>
-        <!--     <div class="select">
-                <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
             </div>
-            <div class="select">
-                <label for="videoSource">Video source: </label><select id="videoSource"></select>
-            </div> -->
-            <form id="make-call">
-                <input type="text" placeholder="Call peer id..." id="peer-id">
-                <button type="submit">Call</button>
-            </form>
-            <form id="end-call">
-                <p>Currently in call with <span id="connected-peer-id">...</span></p>
-                <button type="submit">End Call</button>
-            </form>
-        <!--     <input type="file" accept="audio/*" capture="microphone" id="recorder"> -->
-
-        </div>
-    <div id="speak"><button>Speak</button></div>
-</div>
-
+        <div id="speak"><button>Speak</button></div>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
 </body>
 </html>
